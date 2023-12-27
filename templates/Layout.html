@@ -26,11 +26,10 @@
       id="-lib-5-xy-js-js"
     ></script>
     <script
-            type="text/javascript"
-            src="https://cdn.amcharts.com/lib/5/hierarchy.js?ver=20231102-e98"
-            id="-lib-5-hierarchy-js-js">
-
-    </script>
+      type="text/javascript"
+      src="https://cdn.amcharts.com/lib/5/hierarchy.js?ver=20231102-e98"
+      id="-lib-5-hierarchy-js-js"
+    ></script>
     <script
       type="text/javascript"
       src="https://cdn.amcharts.com/lib/5/themes/Animated.js?ver=20231102-e98"
@@ -44,7 +43,15 @@
       src="{{ url_for('static', filename='2nd-Chart.js') }}"
       defer
     ></script>
+    <link rel="stylesheet" href="../static/Layout.css" />
     <link rel="stylesheet" href="../static/index.css" />
+    <header>
+      <span>
+        <center>
+          <strong> Ford </strong>
+        </center>
+      </span>
+    </header>
   </head>
   <body>
     <div class="container">{% block content %} {% endblock content %}</div>
