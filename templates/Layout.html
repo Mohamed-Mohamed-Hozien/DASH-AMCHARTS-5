@@ -32,28 +32,27 @@
     ></script>
     <script
       type="text/javascript"
+      src="https://cdn.amcharts.com/lib/5/stock.js?ver=20231102-e98"
+      id="-lib-5-stock-js-js"
+    ></script>
+    <script
+      type="text/javascript"
       src="https://cdn.amcharts.com/lib/5/themes/Animated.js?ver=20231102-e98"
       id="-lib-5-themes-Animated-js-js"
     ></script>
     <script
-      src="{{ url_for('static', filename='1st-Chart.js') }}"
+      src="{{ url_for('static', filename='Multilevel_Tree_Map.js') }}"
       defer
     ></script>
     <script
-      src="{{ url_for('static', filename='2nd-Chart.js') }}"
+      src="{{ url_for('static', filename='Stock_Chart_With_Volume.js') }}"
       defer
     ></script>
     <link rel="stylesheet" href="../static/Layout.css" />
     <link rel="stylesheet" href="../static/index.css" />
-    <header>
-      <span>
-        <center>
-          <strong> Ford </strong>
-        </center>
-      </span>
-    </header>
+    <center><h1 class="h1">Ford</h1></center>
   </head>
-  <body>
+  <body class="body">
     <div class="container">{% block content %} {% endblock content %}</div>
   </body>
 </html>

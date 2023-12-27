@@ -6,9 +6,11 @@
 }
 
 .Multilevel_Tree_Map {
-    grid-area: 1 / 1 / 1 / 2;
+    grid-area: 1 / 1 / 2 / 1;
 }
 
-.Lollipop_Chart {
+.Stock_Chart_With_Volume{
     grid-area: 2 / 1 / 2 / 2;
 }
+
+
