@@ -53,8 +53,8 @@ function updateChart2(data_df) {
         sort: "descending",
         singleBranchOnly: false,
         downDepth: 1,
-        upDepth: -1,
-        initialDepth: 2,
+        upDepth: 0,
+        initialDepth: 1,
         valueField: "value",
         categoryField: "name",
         childDataField: "children",
@@ -64,6 +64,13 @@ function updateChart2(data_df) {
     );
 
     series.get("colors").set("step", 1);
+
+    container.children.moveValue(
+      am5hierarchy.BreadcrumbBar.new(root, {
+        series: series,
+      }),
+      0
+    );
 
     // Generate and set data
 
@@ -109,7 +116,7 @@ function updateChart2(data_df) {
 
       return [
         {
-          name: "Root",
+          name: "Home",
           children: treeData,
         },
       ];
