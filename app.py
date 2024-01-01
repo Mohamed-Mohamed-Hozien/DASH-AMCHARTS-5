@@ -37,20 +37,24 @@ def About():
     return flask.render_template('About.html')
 
 
-@app.route('/get-datachart1')
+@app.route('/get-datachart')
 def get_datachart():
     Date = df["Date"].values
+    Open = df["Open"].values
+    High = df["High"].values
+    Low = df["Low"].values
+    Close = df["Close"].values
     Volume = df["Volume"].values
     data = []
     for i in range(len(Volume)):
-        data.append({"Date": Date[i], "Volume": int(Volume[i])})
+        data.append({"Date": int(Date[i])*1000,
+                     "Open": int(Open[i]),
+                     "High": int(High[i]),
+                     "Low": int(Low[i]),
+                     "Close": int(Close[i]),
+                     "Volume": int(Volume[i])})
 
     return jsonify(data)
-
-
-@app.route('/get-datatable1')
-def get_datatable():
-    return jsonify(df.head(10).to_html())
 
 
 if __name__ == '__main__':
