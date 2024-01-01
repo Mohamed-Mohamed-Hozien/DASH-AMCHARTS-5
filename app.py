@@ -24,6 +24,7 @@ def create_connection(db_file):
 
 
 df = pd.read_csv("Data.csv")
+df2 = pd.read_csv("car_sales_data.csv")
 
 
 @app.route('/')
@@ -53,6 +54,23 @@ def get_datachart():
                      "Low": int(Low[i]),
                      "Close": int(Close[i]),
                      "Volume": int(Volume[i])})
+
+    return jsonify(data)
+
+
+@app.route('/get-datachart2')
+def get_datachart2():
+    data = {}
+
+    for _, row in df2.iterrows():
+        brand = row['Brand']
+        model = row['Model']
+        sales = int(row['Sales'])
+
+        if brand not in data:
+            data[brand] = {}
+
+        data[brand][model] = sales
 
     return jsonify(data)
 
