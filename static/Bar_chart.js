@@ -10,7 +10,6 @@ function updateChart3(data_df) {
   console.log(data_df);
   try {
     // Create root element
-    // https://www.amcharts.com/docs/v5/getting-started/#Root_element
     var root = am5.Root.new("Bar_chart");
 
     // Set themes
@@ -18,7 +17,6 @@ function updateChart3(data_df) {
     root.setThemes([am5themes_Animated.new(root)]);
 
     // Create chart
-    // https://www.amcharts.com/docs/v5/charts/xy-chart/
     var chart = root.container.children.push(
       am5xy.XYChart.new(root, {
         panX: false,
@@ -30,7 +28,6 @@ function updateChart3(data_df) {
     );
 
     // Add legend
-    // https://www.amcharts.com/docs/v5/charts/xy-chart/legend-xy-series/
     var legend = chart.children.push(
       am5.Legend.new(root, {
         centerX: am5.p50,
@@ -39,7 +36,6 @@ function updateChart3(data_df) {
     );
 
     // Create axes
-    // https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
     var xAxis = chart.xAxes.push(
       am5xy.CategoryAxis.new(root, {
         categoryField: "model",
@@ -61,7 +57,6 @@ function updateChart3(data_df) {
     );
 
     // Add series
-    // https://www.amcharts.com/docs/v5/charts/xy-chart/series/
     var series = chart.series.push(
       am5xy.ColumnSeries.new(root, {
         name: "Models",
@@ -85,7 +80,6 @@ function updateChart3(data_df) {
     );
 
     // Make stuff animate on load
-    // https://www.amcharts.com/docs/v5/concepts/animations/
     chart.appear(1000, 100);
   } catch (e) {
     console.log(e);
