@@ -25,6 +25,7 @@ def create_connection(db_file):
 
 df = pd.read_csv("Data.csv")
 df2 = pd.read_csv("car_sales_data.csv")
+df3 = pd.read_csv("ford.csv")
 
 
 @app.route('/')
@@ -71,6 +72,25 @@ def get_datachart2():
             data[brand] = {}
 
         data[brand][model] = sales
+
+    return jsonify(data)
+
+
+@app.route('/get-datachart3')
+def get_datachart3():
+    data = []
+
+    # Group the DataFrame by 'model' and calculate the sum of 'price' for each group
+    grouped_data = df3.groupby('model')['price'].sum().reset_index()
+
+    # Convert the grouped data to a list of dictionaries
+    for _, row in grouped_data.iterrows():
+        model = row['model'].strip()
+        sum_of_price = int(row['price'])
+
+        data.append({'model': model, 'Sum of price': sum_of_price})
+
+    return jsonify(data)
 
     return jsonify(data)
 

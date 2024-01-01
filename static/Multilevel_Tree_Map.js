@@ -10,7 +10,6 @@ function updateChart2(data_df) {
   console.log(data_df);
   try {
     // Create root element
-    // https://www.amcharts.com/docs/v5/getting-started/#Root_element
     var root = am5.Root.new("Multilevel_Tree_Map");
 
     const myTheme = am5.Theme.new(root);
@@ -49,7 +48,6 @@ function updateChart2(data_df) {
     );
 
     // Create series
-    // https://www.amcharts.com/docs/v5/charts/hierarchy/#Adding
     var series = container.children.push(
       am5hierarchy.Treemap.new(root, {
         sort: "descending",
@@ -68,7 +66,6 @@ function updateChart2(data_df) {
     series.get("colors").set("step", 1);
 
     // Generate and set data
-    // https://www.amcharts.com/docs/v5/charts/hierarchy/#Setting_data
 
     function processData(data_df) {
       var treeData = [];
