@@ -23,9 +23,22 @@ def create_connection(db_file):
     return conn
 
 
-df = pd.read_csv("Data.csv")
-df2 = pd.read_csv("car_sales_data.csv")
-df3 = pd.read_csv("ford.csv")
+# df = pd.read_csv("Data.csv")
+# connection = create_connection("Stock.db")
+# df.to_sql("Stock", connection, if_exists='replace')
+# connection.close()
+
+
+# df2 = pd.read_csv("car_sales_data.csv")
+# connection = create_connection("Model_prices.db")
+# df2.to_sql("Model_prices", connection, if_exists='replace')
+# connection.close()
+
+
+# df3 = pd.read_csv("ford.csv")
+# connection = create_connection("ford_model_prices.db")
+# df3.to_sql("ford_model_prices", connection, if_exists='replace')
+# connection.close()
 
 
 @app.route('/')
@@ -41,6 +54,9 @@ def About():
 
 @app.route('/get-datachart')
 def get_datachart():
+    db_url = 'sqlite:///Stock.db'
+    engine = create_engine(db_url, echo=True)
+    df = pd.read_sql('select * from Stock', engine)
     Date = df["Date"].values
     Open = df["Open"].values
     High = df["High"].values
@@ -61,9 +77,12 @@ def get_datachart():
 
 @app.route('/get-datachart2')
 def get_datachart2():
+    db_url = 'sqlite:///Model_prices.db'
+    engine = create_engine(db_url, echo=True)
+    df = pd.read_sql('select * from Model_prices', engine)
     data = {}
 
-    for _, row in df2.iterrows():
+    for _, row in df.iterrows():
         brand = row['Brand']
         model = row['Model']
         sales = int(row['Sales'])
@@ -78,10 +97,13 @@ def get_datachart2():
 
 @app.route('/get-datachart3')
 def get_datachart3():
+    db_url = 'sqlite:///ford_model_prices.db'
+    engine = create_engine(db_url, echo=True)
+    df = pd.read_sql('select * from ford_model_prices', engine)
     data = []
 
     # Group the DataFrame by 'model' and calculate the sum of 'price' for each group
-    grouped_data = df3.groupby('model')['price'].sum().reset_index()
+    grouped_data = df.groupby('model')['price'].sum().reset_index()
 
     # Convert the grouped data to a list of dictionaries
     for _, row in grouped_data.iterrows():
