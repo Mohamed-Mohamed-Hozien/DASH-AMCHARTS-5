@@ -19,6 +19,12 @@ This project is a data visualization dashboard that displays:
 ![Ford Logo](images/ford_logo.jpg)
 *Ford brand logo used in the application*
 
+## Video Demonstration
+
+https://github.com/yourusername/DASH-AMCHARTS-5/assets/your-user-id/0603.mp4
+
+*Watch the video above to see the dashboard in action*
+
 ## Features
 
 - Interactive stock market charts
